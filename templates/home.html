@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <h1>Главная страница</h1>
+<hr>
+{% if user.is_authenticated %}
+<form method="post" action="{% url 'logout' %}">
+  {% csrf_token %}
+  <button type="submit">Выйти</button>
+</form>
+{% else %}
+<a href="{% url 'login' %}">
+<button type="submit">Войти</button>
+</a>
+<hr>
+<a href="{% url 'register' %}">
+<button type="submit">Зарегистрироваться</button>
+</a>
+
+
+
+{% endif %}
+{% endblock %}

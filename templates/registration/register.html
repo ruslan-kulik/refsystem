@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Регистрация</h1>
+  <hr>
+
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      <strong>Произошла ошибка при регистрации:</strong>
+      <ul>
+        {% for field, errors in form.errors.items %}
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        {% if field.errors %}
+          <div class="text-danger">{{ field.errors.as_text|linebreaks }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+  </form>
+{% endblock %}
