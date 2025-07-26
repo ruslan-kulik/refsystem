@@ -31,7 +31,8 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ALLOWED_HOSTS = [
-    'axis312.pythonanywhere.com'
+    # 'axis312.pythonanywhere.com'
+    # '127.0.0.1'
 ]
 
 

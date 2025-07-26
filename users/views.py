@@ -44,9 +44,6 @@ class Register(View):
                 login(request, authenticated_user)
             return redirect('home')
 
-
-
-
 class SendOTPView(generics.GenericAPIView):
     serializer_class = PhoneSerializer
 
