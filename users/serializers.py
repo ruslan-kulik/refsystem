@@ -16,8 +16,8 @@ class ActivateInviteSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    invited_users = serializers.SerializerMethodField()  # пользователи, которых пригласил текущий
-    invited_by = serializers.SerializerMethodField()     # пользователь, пригласивший текущего
+    invited_users = serializers.SerializerMethodField()
+    invited_by = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
@@ -32,7 +32,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
     def get_invited_users(self, obj):
-        # Возвращает список пользователей, которых пригласил текущий
         return [
             {
                 'phone_number': u.phone_number,
@@ -42,7 +41,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         ]
 
     def get_invited_by(self, obj):
-        # Возвращает информацию о пользователе, который пригласил текущего
         if obj.invited_by:
             return {
                 'phone_number': obj.invited_by.phone_number,

@@ -20,11 +20,11 @@ class CustomUserAdmin(BaseUserAdmin):
         'is_active',
         'is_staff',
         'is_superuser',
-        'date_joined',  # показывается, но не редактируется
+        'date_joined',
     )
     list_filter = ('is_active', 'is_staff', 'is_superuser')
 
-    readonly_fields = ('date_joined',)  # ✅ указываем, что поле только для чтения
+    readonly_fields = ('date_joined',)
 
     fieldsets = (
         (None, {'fields': ('phone_number', 'password')}),

@@ -59,7 +59,6 @@ class SendOTPView(generics.GenericAPIView):
 
         code = f"{random.randint(0, 9999):04d}"
         OTPCode.objects.create(phone_number=phone, code=code)
-        # TODO: подключить SMS-провайдер
 
         return Response({'detail': 'Код отправлен'}, status=status.HTTP_200_OK)
 
